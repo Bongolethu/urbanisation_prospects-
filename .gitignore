@@ -1,0 +1,6 @@
+node_modules/
+lakehouse/
+.ivy2*/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc

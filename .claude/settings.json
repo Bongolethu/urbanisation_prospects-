@@ -1,12 +1,8 @@
 {
-  "permissions": [
-    {
-      "command": "ruff check .",
-      "allow": true
-    },
-    {
-      "command": "pytest",
-      "allow": true
-    }
-  ]
+  "permissions": {
+    "allow": [
+      "Bash(ruff check .)",
+      "Bash(pytest)"
+    ]
+  }
 }

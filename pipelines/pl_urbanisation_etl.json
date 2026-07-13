@@ -1,0 +1,38 @@
+{
+  "name": "pl_urbanisation_etl",
+  "properties": {
+    "activities": [
+      {
+        "name": "Bronze_Ingest_Population",
+        "type": "TridentNotebook",
+        "dependsOn": [],
+        "typeProperties": {
+          "notebookId": "01_bronze_ingest_population",
+          "workspaceId": "<WORKSPACE_ID>"
+        }
+      },
+      {
+        "name": "Silver_Clean_Population",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          { "activity": "Bronze_Ingest_Population", "dependencyConditions": ["Succeeded"] }
+        ],
+        "typeProperties": {
+          "notebookId": "02_silver_clean_population",
+          "workspaceId": "<WORKSPACE_ID>"
+        }
+      },
+      {
+        "name": "Gold_Urbanization_Analytics",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          { "activity": "Silver_Clean_Population", "dependencyConditions": ["Succeeded"] }
+        ],
+        "typeProperties": {
+          "notebookId": "03_gold_urbanization_analytics",
+          "workspaceId": "<WORKSPACE_ID>"
+        }
+      }
+    ]
+  }
+}
